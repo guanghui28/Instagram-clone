@@ -1,82 +1,18 @@
-import {
-	Box,
-	Button,
-	Flex,
-	Image,
-	Input,
-	Text,
-	VStack,
-} from "@chakra-ui/react";
+import { Box, Flex, Image, Text, VStack } from "@chakra-ui/react";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import Login from "./Login";
+import Signup from "./Signup";
 
 const AuthFrom = () => {
-	const [isLogin, setIsLogin] = useState(false);
-	const [inputs, setInputs] = useState({
-		email: "",
-		password: "",
-		confirmPassword: "",
-	});
-	const navigate = useNavigate();
-
-	const handleAuth = () => {
-		if (!inputs.email || !inputs.password || !inputs.confirmPassword) {
-			alert("Please fill all the field");
-			return;
-		}
-		navigate("/");
-	};
-
-	const handleOnChangeInputs = (e) => {
-		const { value, name } = e.target;
-		setInputs((prev) => ({
-			...prev,
-			[name]: value,
-		}));
-	};
+	const [isLogin, setIsLogin] = useState(true);
 
 	return (
 		<>
 			<Box border="1px solid gray" borderRadius={4} p={5}>
 				<VStack spacing={4}>
 					<Image h={24} src="/logo.png" alt="Logo" cursor="pointer" />
-					<Input
-						placeholder="Email"
-						type="email"
-						fontSize={14}
-						name="email"
-						value={inputs.email}
-						onChange={handleOnChangeInputs}
-					/>
-					<Input
-						placeholder="Password"
-						type="password"
-						fontSize={14}
-						name="password"
-						value={inputs.password}
-						onChange={handleOnChangeInputs}
-					/>
 
-					{!isLogin && (
-						<Input
-							placeholder="Confirm password"
-							type="password"
-							fontSize={14}
-							name="confirmPassword"
-							value={inputs.confirmPassword}
-							onChange={handleOnChangeInputs}
-						/>
-					)}
-
-					<Button
-						w="full"
-						colorScheme="blue"
-						size="sm"
-						fontSize={14}
-						onClick={handleAuth}
-					>
-						{isLogin ? "Login" : "Sign up"}
-					</Button>
+					{isLogin ? <Login /> : <Signup />}
 
 					{/* -------------OR--------------- */}
 					<Flex align="center" justify="center" w="full" gap={1}>
