@@ -12,6 +12,7 @@ const Login = () => {
 	return (
 		<>
 			<Input
+				size="sm"
 				placeholder="Email"
 				type="email"
 				fontSize={14}
@@ -20,6 +21,7 @@ const Login = () => {
 			/>
 			<InputGroup>
 				<Input
+					size="sm"
 					placeholder="Password"
 					type={showPassword ? "text" : "password"}
 					fontSize={14}
@@ -36,6 +38,7 @@ const Login = () => {
 					</Button>
 				</InputRightElement>
 			</InputGroup>
+
 			<Button w="full" colorScheme="blue" size="sm" fontSize={14}>
 				Login
 			</Button>
